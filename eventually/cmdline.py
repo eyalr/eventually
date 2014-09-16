@@ -19,8 +19,8 @@ def get_config(base_dir):
 def _normalize_path(normalize_me, paths):
     # First, extract the path out of the paths config.
     extracted = paths.get('paths', normalize_me)
-    # Then, os.path.expanduser() it.
-    return os.path.expanduser(extracted)
+    # Then, os.path.expanduser() and os.path.expandvars() it.
+    return os.path.expandvars(os.path.expanduser(extracted))
 
 
 def run_metric(program, cwd):
